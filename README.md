@@ -38,6 +38,8 @@ Setja skal upp notendaskráningu á `/register` sem leyfir notanda að skrá sig
   * Verður að vera a.m.k. 8 stafir
   * Verður að vera staðfest (þ.e.a.s. tveir lykilorða reitir)
 
+Eftir skráningu skal senda á þakkarsíðu sem bíður notanda upp á að skrá sig inn.
+
 Nota skal [`bcrypt`](https://github.com/kelektiv/node.bcrypt.js) fyrir geymslu lykilorða. Ekki skal geyma lykilorðin sjálf sem texta neinstaðar.
 
 Eftir innskráningu mega notendur skoða umsóknir, ef reynt er að skoða umsóknir án þess að vera innskráður notandi er notandi sendur á `/login`.
@@ -122,4 +124,9 @@ Verkefnahluti gildir 60% og lokapróf gildir 40%. Ná verður *bæði* verkefnah
 
 ---
 
-> Útgáfa 0.1
+> Útgáfa 0.2
+
+| Útgáfa | Lýsing                                    |
+|--------|-------------------------------------------|
+| 0.1    | Fyrsta útgáfa                             |
+| 0.2    | Bæta við hvað gerist eftir nýskráningu    |
