@@ -20,10 +20,10 @@ async function query(q, values = []) {
 
 async function insert(data) {
   const q = `
-INSERT INTO applications
-(name, email, phone, text, job)
-VALUES
-($1, $2, $3, $4, $5)`;
+  INSERT INTO applications
+  (name, email, phone, text, job)
+  VALUES
+  ($1, $2, $3, $4, $5)`;
   const values = [data.name, data.email, data.phone, data.text, data.job];
 
   return query(q, values);
@@ -37,17 +37,17 @@ async function select() {
 
 async function update(id) {
   const q = `
-UPDATE applications
-SET processed = true, updated = current_timestamp
-WHERE id = $1`;
+  UPDATE applications
+  SET processed = true, updated = current_timestamp
+  WHERE id = $1`;
 
-  return query(q, id);
+  return query(q, [id]);
 }
 
 async function deleteRow(id) {
   const q = 'DELETE FROM applications WHERE id = $1';
 
-  return query(q, id);
+  return query(q, [id]);
 }
 
 module.exports = {

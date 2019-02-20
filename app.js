@@ -10,10 +10,12 @@ const applications = require('./applications');
 
 /* todo sækja stillingar úr env */
 
+/*
 if (!sessionSecret) {
   console.error('Add SESSION_SECRET to .env');
   process.exit(1);
 }
+*/
 
 const app = express();
 
@@ -43,7 +45,7 @@ app.locals.isInvalid = isInvalid;
 
 app.use('/', apply);
 app.use('/register', register);
-app.use('/applications', applications);
+app.use(applications);
 app.use('/admin', admin);
 
 function notFoundHandler(req, res, next) { // eslint-disable-line

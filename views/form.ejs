@@ -5,19 +5,19 @@
 <form method="post" action="/">
   <div class="field<%= locals.isInvalid('name', errors) ?  ' field--invalid' : '' %>">
     <label for="name">Nafn</label>
-    <input type="text" name="name" id="name" value="<%= name %>" class="">
+    <input type="text" name="name" id="name" value="<%= name %>" class="" placeholder="Jón Jónsson">
   </div>
   <div class="field<%= locals.isInvalid('email', errors) ?  ' field--invalid' : '' %>">
     <label for="email">Netfang</label>
-    <input type="text" name="email" id="email" value="<%= email %>" class="">
+    <input type="text" name="email" id="email" value="<%= email %>" class="" placeholder="jon@jonsson.is">
   </div>
   <div class="field<%= locals.isInvalid('phone', errors) ?  ' field--invalid' : '' %>">
     <label for="phone">Sími</label>
-    <input type="text" name="phone" id="phone" value="<%= phone %>" class="">
+    <input type="text" name="phone" id="phone" value="<%= phone %>" class="" placeholder="123-4567">
   </div>
-  <div class="field<%= locals.isInvalid('text', errors) ?  ' field--invalid' : '' %>">
+  <div class="field text<%= locals.isInvalid('text', errors) ?  ' field--invalid' : '' %>">
     <label for="text">Kynning á þér:</label>
-    <textarea name="text" id="text"><%= text %></textarea>
+    <textarea rows="6" name="text" id="text" placeholder="Halló, ég heiti..."><%= text %></textarea>
   </div>
 
   <h2>Starf sem sótt er um:</h2>
@@ -40,7 +40,7 @@
     </ul>
   <% } %>
 
-  <button>Senda umsókn</button>
+  <button class="submit">Senda umsókn</button>
 </form>
 
 <%- include('footer') -%>

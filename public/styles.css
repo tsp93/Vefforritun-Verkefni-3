@@ -16,3 +16,135 @@ html { /* stylelint-disable-line */
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
 }
+
+main {
+  margin: 3em auto 5em auto;
+  max-width: 75em;
+}
+
+h1, h2, h3 {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1 {
+  font-size: 3em;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 1rem 0;
+}
+
+form {
+  display: flex;
+  flex-flow: column;
+}
+
+.errors {
+  list-style-type: disc;
+  margin-bottom: 2rem;
+}
+
+.error {
+  display: list-item;
+  padding: 2px;
+}
+
+.field {
+  align-items: center;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+.field--radio {
+  flex-flow: row;
+  justify-content: flex-start;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+}
+
+.field--invalid {
+  background-color: #fbb;
+  border-color: #855;
+}
+
+.text {
+  align-items: flex-start;
+}
+
+label {
+  align-items: center;
+  display: flex;
+  flex-flow: row;
+  font-size: 22px;
+}
+
+input, textarea, .submit {
+  border: 1px solid #888;
+  font: inherit;
+}
+
+input[type=text], input[type=email], input[type=tel], textarea {
+  border-radius: 4px;
+  padding: 0.5em;
+  width: 85%;
+}
+
+input[type=radio] {
+  margin-right: 10%;
+}
+
+.submit {
+  background-color: white;
+  border-radius: 4px;
+  height: 80%;
+  margin: 1rem 0;
+  padding: 0.5rem;
+  width: 10em;
+}
+
+.submit:hover {
+  background-color: #bbb;
+  cursor: pointer;
+  transition: 300ms ease-in;
+}
+
+.applications {
+  display: flex;
+  flex-flow: column;
+}
+
+.apptext {
+  margin-top: 1em;
+}
+
+.butts {
+  align-items: center;
+  background-color: white;
+  border-radius: 4px;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 1%;
+}
+
+.formbutt {
+  height: 3rem;
+  width: 20%;
+}
+
+@media (max-width: 600px) {
+  .field {
+    align-items: flex-start;
+    flex-flow: column wrap;
+  }
+  .butts {
+    width: 75%;
+  }
+}
+
