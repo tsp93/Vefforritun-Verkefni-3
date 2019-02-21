@@ -44,7 +44,7 @@ app.locals.isInvalid = isInvalid;
 /* todo setja upp login og logout virkni */
 
 app.use('/', apply);
-app.use('/register', register);
+app.use(register);
 app.use(applications);
 app.use('/admin', admin);
 

@@ -50,10 +50,29 @@ async function deleteRow(id) {
   return query(q, [id]);
 }
 
+async function selectUser (username){
+  const q = 'SELECT username FROM applications WHERE username = $1';
+
+  return query(q, [id]);
+}
+
+async function insertUser (data){
+  const q = `
+  INSERT INTO users
+  (name, email, username, password)
+  VALUES
+  ($1, $2, $3, $4)`;
+  const values = [data.name, data.email, data.username, data.password];
+
+  return query(q, values);
+}
+
 module.exports = {
   query,
   insert,
   select,
   update,
-  deleteRow, // delete er frátekið orð
+  deleteRow,
+  selectUser,
+  insertUser,
 };

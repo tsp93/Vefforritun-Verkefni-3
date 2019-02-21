@@ -17,9 +17,28 @@ html { /* stylelint-disable-line */
   font-size: 16px;
 }
 
-main {
+body {
   margin: 3em auto 5em auto;
   max-width: 75em;
+}
+
+nav {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.navbar {
+  display: flex;
+  flex-flow: row;
+  list-style: none;
+}
+
+.navref {
+  color: black;
+  margin-right: 1rem;
+  text-decoration: none;
 }
 
 h1, h2, h3 {
@@ -56,7 +75,7 @@ form {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  margin: 0.5rem 0;
+  margin: 0.25rem 0;
   padding: 0.5rem;
 }
 
@@ -67,7 +86,12 @@ form {
   padding: 0.5rem;
 }
 
-.field--invalid {
+.field--radio.field--invalid{
+  background-color: #fbb;
+  border-color: #855;
+}
+
+.field--invalid input, textarea{
   background-color: #fbb;
   border-color: #855;
 }
@@ -88,7 +112,7 @@ input, textarea, .submit {
   font: inherit;
 }
 
-input[type=text], input[type=email], input[type=tel], textarea {
+input[type=text], input[type=email], input[type=tel], input[type=password], textarea {
   border-radius: 4px;
   padding: 0.5em;
   width: 85%;

@@ -62,7 +62,6 @@ function form(req, res) {
     text: '',
     job: '',
     errors: [],
-    page: 'apply',
   };
   res.render('form', data);
 }
