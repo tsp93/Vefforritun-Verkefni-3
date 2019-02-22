@@ -1,34 +1,48 @@
 const bcrypt = require('bcrypt');
 const { query } = require('./db');
 
-const records = [
-  {
-    id: 1,
-    username: 'admin',
-    password: '$2a$11$pgj3.zySyFOvIQEpD7W6Aund1Tw.BFarXxgLJxLbrzIv/4Nteisii',
-    name: 'Stjórnandi',
-  },
-];
-
-function comparePasswords(hash, user) {
-  bcrypt.compare(hash, user.password).then((res) => {
-    if (res) {
-      return user;
-    }
-    return false;
-  });
+async function findByUsername(username) {
+  const q = 'SELECT * FROM users WHERE username = $1';
+  const user = await query(q, [username]);
+  
+  return user;
 }
 
-exports.findById = id => new Promise((resolve) => {
-  const found = records.find(u => u.id === id);
+async function findById(id) {
+  const q = 'SELECT * FROM users WHERE id = $1';
+  const user = await query(q, [id]);
+  
+  return user;
+}
 
-  if (found) {
-    return resolve(found);
+async function createUser(data) {
+  const hashedPassword = await bcrypt.hash(data.password, 11);
+
+  const q = `
+  INSERT INTO users
+  (name, email, username, password)
+  VALUES
+  ($1, $2, $3, $4)`;
+  const values = [data.name, data.email, data.username, hashedPassword];
+
+  const result = await query(q, values);
+
+  return result.rows[0];
+}
+
+async function comparePasswords(password, user) {
+  const ok = await bcrypt.compare(password, user.password);
+
+  if (ok) {
+    return user;
   }
 
-  return resolve(null);
-});
+  return false;
+}
 
 module.exports = {
+  findByUsername,
+  findById,
+  createUser,
   comparePasswords,
 };

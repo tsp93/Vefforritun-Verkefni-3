@@ -3,7 +3,7 @@ const express = require('express');
 const { check, validationResult } = require('express-validator/check');
 const { sanitize } = require('express-validator/filter');
 
-const { findUser, insertUser } = require('./db');
+const { findByUsername, createUser } = require('./users');
 const { catchErrors } = require('./utils');
 
 const router = express.Router();
@@ -26,7 +26,7 @@ const formValidation = [
     .withMessage('Notendanafn má ekki vera tómt'),
 
   check('username')
-    .custom(value => value !== findUser(value))
+    .custom(value => value !== findByUsername(value))
     .withMessage('Notendanafn er ekki laust'),
 
   check('password')
@@ -89,7 +89,7 @@ async function formPost(req, res) {
     return res.render('register', data);
   }
 
-  await insertUser(data);
+  await createUser(data);
 
   data = {};
   return res.redirect('/thanks');

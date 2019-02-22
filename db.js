@@ -50,21 +50,10 @@ async function deleteRow(id) {
   return query(q, [id]);
 }
 
-async function selectUser (username){
-  const q = 'SELECT username FROM applications WHERE username = $1';
+async function selectUsers() {
+  const result = await query('SELECT * FROM users ORDER BY id');
 
-  return query(q, [id]);
-}
-
-async function insertUser (data){
-  const q = `
-  INSERT INTO users
-  (name, email, username, password)
-  VALUES
-  ($1, $2, $3, $4)`;
-  const values = [data.name, data.email, data.username, data.password];
-
-  return query(q, values);
+  return result.rows;
 }
 
 module.exports = {
@@ -73,6 +62,5 @@ module.exports = {
   select,
   update,
   deleteRow,
-  selectUser,
-  insertUser,
+  selectUsers,
 };

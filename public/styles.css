@@ -91,7 +91,7 @@ form {
   border-color: #855;
 }
 
-.field--invalid input, textarea{
+.field--invalid input, .field--invalid textarea{
   background-color: #fbb;
   border-color: #855;
 }
@@ -171,4 +171,3 @@ input[type=radio] {
     width: 75%;
   }
 }
-

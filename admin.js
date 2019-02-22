@@ -1,7 +1,8 @@
 const express = require('express');
+const { ensureLoggedIn, catchErrors } = require('./utils');
 
 const router = express.Router;
 
-/* todo */
+// router.get('/admin', ensureLoggedIn, catchErrors(data));
 
 module.exports = router;

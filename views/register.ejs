@@ -2,7 +2,7 @@
 
 <h1>Nýskráning</h1>
 
-<form method="post" action="/">
+<form method="post" action="/register">
   <div class="field<%= locals.isInvalid('name', errors) ?  ' field--invalid' : '' %>">
     <label for="name">Nafn</label>
     <input type="text" name="name" id="name" value="<%= name %>" class="">

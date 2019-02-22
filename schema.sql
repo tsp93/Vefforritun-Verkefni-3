@@ -14,6 +14,7 @@ CREATE TABLE users (
   id serial primary key,
   name varchar(64) not null,
   email varchar(64) not null,
-  username varchar(64) not null,
-  password text not null
+  username varchar(64) unique not null,
+  password text not null,
+  admin boolean default false
 );
