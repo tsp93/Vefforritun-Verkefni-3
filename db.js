@@ -2,6 +2,7 @@ const { Client } = require('pg');
 
 const connectionString = process.env.DATABASE_URL;
 
+// Tekur query og skilar result
 async function query(q, values = []) {
   const client = new Client({ connectionString });
 
@@ -18,6 +19,7 @@ async function query(q, values = []) {
   }
 }
 
+// Stingur umsókn í gagnagrunninn
 async function insert(data) {
   const q = `
   INSERT INTO applications
@@ -29,12 +31,14 @@ async function insert(data) {
   return query(q, values);
 }
 
+// Sækir allar umsóknir
 async function select() {
   const result = await query('SELECT * FROM applications ORDER BY id');
 
   return result.rows;
 }
 
+// Uppfærir umsókn
 async function update(id) {
   const q = `
   UPDATE applications
@@ -44,18 +48,21 @@ async function update(id) {
   return query(q, [id]);
 }
 
+// Eyðir umsókn
 async function deleteRow(id) {
   const q = 'DELETE FROM applications WHERE id = $1';
 
   return query(q, [id]);
 }
 
+// Sækir alla notendur
 async function selectUsers() {
   const result = await query('SELECT * FROM users ORDER BY id');
 
   return result.rows;
 }
 
+// Uppfærir alla notendur
 async function updateUsers(ids, admin) {
   const results = [];
 

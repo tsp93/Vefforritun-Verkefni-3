@@ -5,11 +5,14 @@ const { selectUsers, updateUsers } = require('./db');
 
 const router = express.Router();
 
+// Birtir alla notendur
 async function showUsers(req, res) {
   const users = await selectUsers();
   res.render('admin', { users, title: 'Notendur' });
 }
 
+// Flokkar allt í fylki af fylkjum [[id], [admin]]
+// þar sem admin er boolean gildi fyrir tilsvarandi user id
 function sortUsers(admin) {
   const a = [];
   const b = [];
@@ -26,6 +29,7 @@ function sortUsers(admin) {
   return [a, b];
 }
 
+// Uppfærir notendur með ný admin gildi
 async function updateAdmin(req, res) {
   const { admin } = req.body;
   const sortedAdmin = sortUsers(admin);

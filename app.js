@@ -109,6 +109,7 @@ app.use((req, res, next) => {
   next();
 });
 
+// Birta login síðu
 app.get('/login', utils.preventSecondLogin, (req, res) => {
   let message = '';
 
@@ -119,6 +120,7 @@ app.get('/login', utils.preventSecondLogin, (req, res) => {
   res.render('login', { showLogin: false, message, title: 'Innskráning' });
 });
 
+// Login virkni
 app.post(
   '/login',
   passport.authenticate('local', {
@@ -130,6 +132,7 @@ app.post(
   },
 );
 
+// Logout virkni
 app.get('/logout', (req, res) => {
   req.logout();
   req.session.destroy();

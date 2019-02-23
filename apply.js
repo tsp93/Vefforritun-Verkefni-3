@@ -8,6 +8,7 @@ const { catchErrors } = require('./utils');
 
 const router = express.Router();
 
+// Athuga hvort allt sé með felldu
 const formValidation = [
   check('name')
     .isLength({ min: 1 })
@@ -66,6 +67,7 @@ function form(req, res) {
   res.render('form', data);
 }
 
+// Umsóknarvirkni
 async function formPost(req, res) {
   const {
     body: {

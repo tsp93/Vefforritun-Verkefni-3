@@ -8,6 +8,7 @@ const { catchErrors, preventSecondLogin } = require('./utils');
 
 const router = express.Router();
 
+// Athuga hvort allt sé með felldu
 const formValidation = [
   check('name')
     .isLength({ min: 1 })
@@ -65,6 +66,7 @@ function form(req, res) {
   res.render('register', data);
 }
 
+// Nýskráningarvirkni
 async function formPost(req, res) {
   const {
     body: {
@@ -91,15 +93,15 @@ async function formPost(req, res) {
   await createUser(data);
 
   data = {};
-  return res.redirect('/thanks');
+  return res.redirect('/thanks2');
 }
 
-function thanks(req, res) {
-  return res.render('thanks', { title: 'Takk fyrir' });
+function thanks2(req, res) {
+  return res.render('thanks2', { title: 'Takk fyrir' });
 }
 
 router.get('/register', preventSecondLogin, form);
 router.post('/register', formValidation, catchErrors(formPost));
-router.get('/thanks', thanks);
+router.get('/thanks2', thanks2);
 
 module.exports = router;
