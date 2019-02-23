@@ -1,4 +1,5 @@
 const express = require('express');
+const { ensureLoggedIn } = require('./utils');
 
 const { select, update, deleteRow } = require('./db');
 
@@ -10,7 +11,7 @@ function catchErrors(fn) {
 
 async function showApplications(req, res) {
   const applications = await select();
-  res.render('applications', { applications, title: 'Atvinnuumsóknir' });
+  res.render('applications', { applications, title: 'Umsóknir' });
 }
 
 async function processApplication(req, res) {
@@ -26,7 +27,7 @@ async function deleteApplication(req, res) {
 }
 
 
-router.get('/applications', showApplications);
+router.get('/applications', ensureLoggedIn, showApplications);
 router.post('/applications/process/:id', catchErrors(processApplication));
 router.post('/applications/delete/:id', catchErrors(deleteApplication));
 

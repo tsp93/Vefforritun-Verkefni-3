@@ -37,3 +37,13 @@ VALUES
   dignissim convallis. Nunc efficitur sagittis felis at gravida. Praesent quis quam molestie, rutrum mi sed, 
   malesuada nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse felis tortor, 
   imperdiet in metus eget, bibendum aliquet nisl..');
+
+INSERT INTO users
+  (name, email, username, password, admin)
+VALUES
+  ('Admin', 'admin@example.org', 'admin', '$2b$11$nxGVeFRF2sIpRYiKek/FbunTVgSPP69Yq9yZclR4RoAfp43uli1/i', true);
+
+INSERT INTO users
+  (name, email, username, password)
+VALUES
+  ('Nafnlaus', 'nn@example.org', 'nn', '$2b$11$Nn8JGmJni7jqGETLdlATiOiIUH7HmYHJQW//hay5RYnVPfwp65jCG');

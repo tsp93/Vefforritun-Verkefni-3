@@ -12,10 +12,21 @@
     <header>
       <nav>
         <ul class="navbar">
-          <li><a class="navref" href="/">Atvinnuumsókn</a></li>
-          <li><a class="navref" href="/login">Innskráning</a></li>
-          <li><a class="navref" href="/register">Nýskráning</a></li>
+          <li><a class="navref<%= (title === 'Atvinnuumsókn') ? ' selected' : '' %>" href="/">Atvinnuumsókn</a></li>
+            <% if(locals.user){ %>
+              <li><a class="navref<%= (title === 'Umsóknir') ? ' selected' : '' %>" href="/applications">Umsóknir</a></li>
+              <li><a class="navref<%= (title === 'Notendur') ? ' selected' : '' %>" href="/admin">Notendur</a></li>
+            <% } else{ %>
+              <li><a class="navref<%= (title === 'Innskráning') ? ' selected' : '' %>" href="/login">Innskráning</a></li>
+              <li><a class="navref<%= (title === 'Nýskráning') ? ' selected' : '' %>" href="/register">Nýskráning</a></li>
+            <% } %>
         </ul>
       </nav>
+      <% if(locals.user){ %>
+        <div>
+          <p><%= user.name %></p>
+          <a href="/logout">Útskrá</a>
+        </div>
+      <% } %>
     </header>
     <main>

@@ -4,15 +4,15 @@ const { query } = require('./db');
 async function findByUsername(username) {
   const q = 'SELECT * FROM users WHERE username = $1';
   const user = await query(q, [username]);
-  
-  return user;
+
+  return user.rows[0];
 }
 
 async function findById(id) {
   const q = 'SELECT * FROM users WHERE id = $1';
   const user = await query(q, [id]);
-  
-  return user;
+
+  return user.rows[0];
 }
 
 async function createUser(data) {
@@ -24,7 +24,6 @@ async function createUser(data) {
   VALUES
   ($1, $2, $3, $4)`;
   const values = [data.name, data.email, data.username, hashedPassword];
-
   const result = await query(q, values);
 
   return result.rows[0];

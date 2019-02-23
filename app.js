@@ -3,15 +3,15 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 
+const session = require('express-session');
+const passport = require('passport');
+const { Strategy } = require('passport-local');
+
 const apply = require('./apply');
 const register = require('./register');
 const admin = require('./admin');
 const applications = require('./applications');
 const users = require('./users');
-
-const session = require('express-session');
-const passport = require('passport');
-const { Strategy } = require('passport-local');
 
 const sessionSecret = process.env.SESSION_SECRET;
 

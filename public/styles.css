@@ -22,6 +22,12 @@ body {
   max-width: 75em;
 }
 
+header {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+}
+
 nav {
   display: flex;
   flex-flow: row;
@@ -39,6 +45,11 @@ nav {
   color: black;
   margin-right: 1rem;
   text-decoration: none;
+}
+
+.navref.selected {
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 h1, h2, h3 {
@@ -127,8 +138,8 @@ input[type=radio] {
   border-radius: 4px;
   height: 80%;
   margin: 1rem 0;
-  padding: 0.5rem;
-  width: 10em;
+  padding: 0.5rem 1rem;
+  width: fit-content;
 }
 
 .submit:hover {
@@ -157,12 +168,26 @@ input[type=radio] {
   padding: 1%;
 }
 
-.formbutt {
-  height: 3rem;
-  width: 20%;
+.users {
+  overflow-x: auto;
+}
+
+table {
+  width: 500px;
+}
+
+th, td {
+  padding: 0.5rem;
 }
 
 @media (max-width: 600px) {
+  body {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  header {
+    flex-direction: column;
+  }
   .field {
     align-items: flex-start;
     flex-flow: column wrap;

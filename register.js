@@ -68,17 +68,16 @@ function form(req, res) {
 async function formPost(req, res) {
   const {
     body: {
-      name, email, username, password, password2,
+      name, email, username, password,
     } = {},
   } = req;
 
   let data = {
-    title: 'Atvinnuumsókn',
+    title: 'Nýskráning',
     name: xss(name),
     email: xss(email),
     username: xss(username),
     password: xss(password),
-    password2: xss(password2),
     errors: [],
   };
 
