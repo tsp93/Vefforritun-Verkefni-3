@@ -12,6 +12,10 @@
     <input type="password" name="password" id="password" class="">
   </div>
 
+  <% if(message) { %>
+    <p class="loginmessage"><%= message %></p>
+  <% } %>
+
   <button class="submit">Innskrá</button>
 </form>
 

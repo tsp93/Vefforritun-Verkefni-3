@@ -17,6 +17,14 @@ function ensureLoggedIn(req, res, next) {
   return res.redirect('/login');
 }
 
+// Koma í veg fyrir að innskráðir notendur fari á login og register
+function preventSecondLogin(req, res, next) {
+  if (req.isAuthenticated()) {
+    return res.redirect('/applications');
+  }
+  return next();
+}
+
 module.exports = {
-  catchErrors, ensureLoggedIn,
+  catchErrors, ensureLoggedIn, preventSecondLogin,
 };

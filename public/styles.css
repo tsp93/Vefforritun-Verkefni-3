@@ -148,6 +148,12 @@ input[type=radio] {
   transition: 300ms ease-in;
 }
 
+.loginmessage {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 1rem;
+}
+
 .applications {
   display: flex;
   flex-flow: column;
@@ -173,11 +179,16 @@ input[type=radio] {
 }
 
 table {
+  border-collapse: collapse;
   width: 500px;
 }
 
+tr:nth-child(even){
+  background-color:#E8E8E8;
+}
+
 th, td {
-  padding: 0.5rem;
+  padding: 1rem;
 }
 
 @media (max-width: 600px) {

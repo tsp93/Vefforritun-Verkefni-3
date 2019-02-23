@@ -12,6 +12,7 @@ const register = require('./register');
 const admin = require('./admin');
 const applications = require('./applications');
 const users = require('./users');
+const utils = require('./utils');
 
 const sessionSecret = process.env.SESSION_SECRET;
 
@@ -108,7 +109,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/login', (req, res) => {
+app.get('/login', utils.preventSecondLogin, (req, res) => {
   let message = '';
 
   if (req.session.messages && req.session.messages.length > 0) {
@@ -131,6 +132,7 @@ app.post(
 
 app.get('/logout', (req, res) => {
   req.logout();
+  req.session.destroy();
   res.redirect('/login');
 });
 

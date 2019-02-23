@@ -3,7 +3,7 @@
 <h1>Notendur</h1>
 
 <% if (locals.user.admin) { %>
-  <form action="/admin">
+  <form method="post" action="/admin">
     <div class="users">
       <table>
         <tr>
@@ -14,7 +14,8 @@
         </tr>
         <% users.forEach((user) => { %>
           <tr>
-            <td><input type="checkbox" name="user" value="<%= user.id %>" <%= user.admin ? 'checked' : '' %>></td>
+          <input type="hidden" name="admin[]" value="<%= user.id %>" />
+            <td><input type="checkbox" name="admin[]" value="<%= user.id %>" <%= user.admin ? 'checked' : '' %>></td>
             <td><%= user.username %></td>
             <td><%= user.name %></td>
             <td><%= user.email %></td>

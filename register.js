@@ -4,7 +4,7 @@ const { check, validationResult } = require('express-validator/check');
 const { sanitize } = require('express-validator/filter');
 
 const { findByUsername, createUser } = require('./users');
-const { catchErrors } = require('./utils');
+const { catchErrors, preventSecondLogin } = require('./utils');
 
 const router = express.Router();
 
@@ -98,7 +98,7 @@ function thanks(req, res) {
   return res.render('thanks', { title: 'Takk fyrir' });
 }
 
-router.get('/register', form);
+router.get('/register', preventSecondLogin, form);
 router.post('/register', formValidation, catchErrors(formPost));
 router.get('/thanks', thanks);
 

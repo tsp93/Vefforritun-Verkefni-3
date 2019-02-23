@@ -1,13 +1,9 @@
 const express = require('express');
-const { ensureLoggedIn } = require('./utils');
 
+const { ensureLoggedIn, catchErrors } = require('./utils');
 const { select, update, deleteRow } = require('./db');
 
 const router = express.Router();
-
-function catchErrors(fn) {
-  return (req, res, next) => fn(req, res, next).catch(next);
-}
 
 async function showApplications(req, res) {
   const applications = await select();

@@ -56,6 +56,18 @@ async function selectUsers() {
   return result.rows;
 }
 
+async function updateUsers(ids, admin) {
+  const results = [];
+
+  const q = 'UPDATE users SET admin = $1 WHERE id = $2';
+  for (let i = 0; i < ids.length; i += 1) {
+    results.push(query(q, [admin[i], ids[i]]));
+  }
+
+  const baz = await Promise.all(results);
+  return baz;
+}
+
 module.exports = {
   query,
   insert,
@@ -63,4 +75,5 @@ module.exports = {
   update,
   deleteRow,
   selectUsers,
+  updateUsers,
 };
