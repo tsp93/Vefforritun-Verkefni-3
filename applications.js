@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { ensureLoggedIn, catchErrors } = require('./utils');
+const { catchErrors, ensureLoggedIn, isAdmin } = require('./utils');
 const { select, update, deleteRow } = require('./db');
 
 const router = express.Router();
@@ -27,7 +27,7 @@ async function deleteApplication(req, res) {
 
 
 router.get('/applications', ensureLoggedIn, showApplications);
-router.post('/applications/process/:id', catchErrors(processApplication));
-router.post('/applications/delete/:id', catchErrors(deleteApplication));
+router.post('/applications/process/:id', ensureLoggedIn, catchErrors(processApplication));
+router.post('/applications/delete/:id', ensureLoggedIn, isAdmin, catchErrors(deleteApplication));
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { ensureLoggedIn, catchErrors } = require('./utils');
+const { catchErrors, ensureLoggedIn, isAdmin } = require('./utils');
 const { selectUsers, updateUsers } = require('./db');
 
 const router = express.Router();
@@ -39,7 +39,7 @@ async function updateAdmin(req, res) {
   return res.redirect('/admin');
 }
 
-router.get('/admin', ensureLoggedIn, catchErrors(showUsers));
-router.post('/admin', catchErrors(updateAdmin));
+router.get('/admin', ensureLoggedIn, isAdmin, catchErrors(showUsers));
+router.post('/admin', ensureLoggedIn, isAdmin, catchErrors(updateAdmin));
 
 module.exports = router;

@@ -25,6 +25,16 @@ function preventSecondLogin(req, res, next) {
   return next();
 }
 
+// Hjálpar middleware sem athugar hvort notandi sé admin og hleypir okkur
+// þá áfram, annars sendir á /applications
+function isAdmin(req, res, next) {
+  const { admin } = req.user;
+  if (!admin) {
+    return res.redirect('/applications');
+  }
+  return next();
+}
+
 module.exports = {
-  catchErrors, ensureLoggedIn, preventSecondLogin,
+  catchErrors, ensureLoggedIn, preventSecondLogin, isAdmin,
 };
